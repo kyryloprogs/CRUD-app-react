@@ -1,0 +1,22 @@
+{
+  "name": "crud-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyryloprogs/CRUD-app-react.git"
+  },
+  "author": "Mytroshyn Kyrylo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyryloprogs/CRUD-app-react/issues"
+  },
+  "homepage": "https://github.com/kyryloprogs/CRUD-app-react#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  }
+}
