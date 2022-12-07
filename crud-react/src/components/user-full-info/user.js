@@ -28,6 +28,7 @@ const CardRow = styled.div`
     font-size: 15px;
     font-weight: bold;
 `;
+
 const User = ({id, firstName, lastName, age, handleDeleteUser}) => {
     const navigator = useNavigate();
 

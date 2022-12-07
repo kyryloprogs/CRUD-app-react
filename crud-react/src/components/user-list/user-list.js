@@ -1,8 +1,10 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import User from '../user-full-info';
 import UserContext from "../../context/user-context";
 import styled from 'styled-components';
+import {useSelector, useDispatch} from 'react-redux';
+import { deleteUser } from '../../redux/user-slice';
 
 const ErrorMessage = styled.div`
     color: red;
@@ -18,24 +20,30 @@ const ContentBlock = styled.div`
 `;
 
 const UserList = () => {
-    const { users, setUsers } = useContext(UserContext);
+    const dispatcher = useDispatch();
+    //const { users, setUsers } = useContext(UserContext);
 
+    const users = useSelector((state) => state.users.items);
+    //console.log(users);
     const handleDeleteUser = (id) => {
-        setUsers(users.filter((usr) => usr.id !== id));
+        //setUsers(users.filter((usr) => usr.id !== id));
+        dispatcher(deleteUser({id: id}));
         alert("Done!");
     };
 
     return (
         <React.Fragment>
             <ContentBlock>
-                {users ? (
+                {/* {users ? (
                 users.map((usr) => (
                     // <ContentBlock>
                         <User key={usr.id} {...usr} handleDeleteUser={handleDeleteUser} />
-                    // </ContentBlock>
-                ))) : (
-                <ErrorMessage>No users available.</ErrorMessage>
-                )}
+                    // </ContentBlock> */}
+                {users.length > 0 ? users.map((usr) => (
+                        <User key={usr.id} {...usr} handleDeleteUser={handleDeleteUser}/> // 
+                
+                )) : <ErrorMessage>No users available.</ErrorMessage>
+                }
             </ContentBlock>
         </React.Fragment>
     );
