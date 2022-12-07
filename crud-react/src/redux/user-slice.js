@@ -10,10 +10,9 @@ export const usersSlice = createSlice({
         state.items.push(action.payload);
     },
     deleteUser: function(state, action) {
-        state.items = state.items.filter(item => item.id !== action.payload);
+        state.items = state.items.filter(item => item.id !== action.payload.id);
     },
     updateUser:  function(state, action) {
-        // state.items = 
         state.items.map(item => {
             if (item.id == action.payload.id) {
                 item.firstName = action.payload.firstName;

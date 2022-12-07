@@ -1,5 +1,4 @@
 import React from "react";
-import { useContext, useState } from "react";
 import User from '../user-full-info';
 import UserContext from "../../context/user-context";
 import styled from 'styled-components';
@@ -21,12 +20,9 @@ const ContentBlock = styled.div`
 
 const UserList = () => {
     const dispatcher = useDispatch();
-    //const { users, setUsers } = useContext(UserContext);
-
     const users = useSelector((state) => state.users.items);
-    //console.log(users);
     const handleDeleteUser = (id) => {
-        //setUsers(users.filter((usr) => usr.id !== id));
+        console.log(id);
         dispatcher(deleteUser({id: id}));
         alert("Done!");
     };
@@ -34,11 +30,6 @@ const UserList = () => {
     return (
         <React.Fragment>
             <ContentBlock>
-                {/* {users ? (
-                users.map((usr) => (
-                    // <ContentBlock>
-                        <User key={usr.id} {...usr} handleDeleteUser={handleDeleteUser} />
-                    // </ContentBlock> */}
                 {users.length > 0 ? users.map((usr) => (
                         <User key={usr.id} {...usr} handleDeleteUser={handleDeleteUser}/> // 
                 
